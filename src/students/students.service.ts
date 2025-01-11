@@ -31,4 +31,11 @@ export class StudentsService {
 
         return student;
     }
+
+    //update 
+    async updateStudent(id: number, data: Partial<student>): Promise<student> {
+        const student = await this.getStudentById(id);
+        Object.assign(student, data);
+        return this.studentRepository.save(student);
+    }
 }
